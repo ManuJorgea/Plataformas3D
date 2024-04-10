@@ -8,6 +8,10 @@ namespace UdeM.Controllers {
     {
         protected CharacterController _cc;
         protected float _gravity = -0.981f;
+
+        protected float _velYGrounded = -0.181f;
+        protected float _lastYPos;
+
         protected Vector3 _velocity;
         protected Vector3 _direction;
 
@@ -29,10 +33,25 @@ namespace UdeM.Controllers {
 
         }
 
+        protected override void Start()
+        {
+            base.Start();
+            _lastYPos = transform.position.y;
+            StartCoroutine("HighVerify");
+        }
+
         protected override void Update()
         {
             base.Update();
             _isGrounded = _cc.isGrounded;
+            _isFalling = (_lastYPos > transform.position.y && ! _isGrounded);
+        }
+
+        IEnumerator HighVerify() {
+            yield return new WaitForSeconds(0.1f);
+            _lastYPos = transform.position.y;
+            StartCoroutine("HighVerify");
+        
         }
 
         protected override void LateUpdate() {
@@ -43,7 +62,7 @@ namespace UdeM.Controllers {
 
             if (_isGrounded && _velocity.y < 0)
             {
-                _velocity.y = -0.181f;
+                _velocity.y = _velYGrounded;
             }
 
             _cc.Move(_velocity);
