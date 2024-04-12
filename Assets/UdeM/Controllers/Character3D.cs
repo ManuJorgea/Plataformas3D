@@ -7,6 +7,9 @@ namespace UdeM.Controllers {
     public class Character3D : EntityController
     {
         protected CharacterController _cc;
+
+        [SerializeField] protected float _high;
+
         protected float _gravity = -0.981f;
 
         protected float _velYGrounded = -0.181f;
@@ -74,6 +77,29 @@ namespace UdeM.Controllers {
 
             _velocity.y = Mathf.Sqrt(_jumpForce * -2 * _gravity);
         }
+
+        protected override void FixedUpdate()
+        {
+            base.FixedUpdate();
+            DetectHigh();
+        }
+
+        protected virtual void DetectHigh()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.down, Mathf.Infinity);
+
+            for (int i = 0; i < hits.Length; i++)
+            {
+                RaycastHit hit = hits[i];
+                if (hit.collider.gameObject != this.gameObject)
+                {
+                    _high = hit.distance;
+                    return;
+                }
+            }
+
+        }
+
     }
 
 }

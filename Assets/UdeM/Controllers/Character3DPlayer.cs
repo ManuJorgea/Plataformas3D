@@ -19,7 +19,7 @@ namespace UdeM.Controllers {
 
             _direction = new Vector3(_axisH, 0, _axisV).normalized;
 
-            Debug.Log(_direction.magnitude);
+            //Debug.Log(_direction.magnitude);
 
             if (_direction.magnitude >= 0.1f)
             {

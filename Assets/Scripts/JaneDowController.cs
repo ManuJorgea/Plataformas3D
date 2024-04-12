@@ -26,8 +26,20 @@ public class JaneDowController : Character3DPlayer
         Vector3 speed = new(_axisH, 0, _axisV);
         _anim.SetFloat("Speed", speed.magnitude);
         _anim.SetBool("Fall", _isFalling);
-        _anim.SetBool("Grounded", _isGrounded);   
+        _anim.SetBool("Grounded", _isGrounded);
+        _anim.SetFloat("High", _high);
     
+    }
+
+    protected override void Jump()
+    {
+        base.Jump();
+        _anim.SetTrigger("Jump");
+    }
+
+    protected override void DetectHigh() {
+        base.DetectHigh();
+        _high -= 1;
     }
 
 }
