@@ -78,6 +78,11 @@ namespace UdeM.Controllers {
             _velocity.y = Mathf.Sqrt(_jumpForce * -2 * _gravity);
         }
 
+        /*protected override void Punch()
+        {
+            base.Punch();
+        }*/
+
         protected override void FixedUpdate()
         {
             base.FixedUpdate();

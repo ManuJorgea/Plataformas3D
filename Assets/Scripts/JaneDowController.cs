@@ -42,4 +42,10 @@ public class JaneDowController : Character3DPlayer
         _high -= 1;
     }
 
+    /*protected override void Punch()
+    {
+        base.Punch();
+        _anim.SetTrigger("Punch");
+    }*/
+
 }

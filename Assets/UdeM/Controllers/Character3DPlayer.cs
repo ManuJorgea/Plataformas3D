@@ -35,6 +35,11 @@ namespace UdeM.Controllers {
             {
                 Jump();
             }
+
+            /*if (_isGrounded && Input.GetButtonDown("Punch"))
+            {
+                Punch();
+            }*/
         }
     }
 }

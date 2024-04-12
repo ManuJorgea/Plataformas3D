@@ -9,6 +9,7 @@ namespace UdeM.Controllers
         protected float _speed;
         protected float _currentSpeed;
         protected float _jumpForce;
+        //protected float _punchForce;
         protected float _gravityMod;
         
 
@@ -22,6 +23,7 @@ namespace UdeM.Controllers
         protected virtual void Awake() {
             _speed = 10f;
             _jumpForce = 10f;
+            //_punchForce = 10f;
             _gravityMod = 1f;
             _isGrounded = false;
             _isCrouching = false;
@@ -41,6 +43,8 @@ namespace UdeM.Controllers
         protected virtual void LateUpdate() { }
 
         protected virtual void Jump() { }
+
+        //protected virtual void Punch() { }
 
         public virtual void Crouch() { }
     }
