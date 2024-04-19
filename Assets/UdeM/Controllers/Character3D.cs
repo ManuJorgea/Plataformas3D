@@ -47,7 +47,19 @@ namespace UdeM.Controllers {
         {
             base.Update();
             _isGrounded = _cc.isGrounded;
-            _isFalling = (_lastYPos > transform.position.y && ! _isGrounded);
+
+            if (_lastYPos > transform.position.y && !_isGrounded)
+            {
+                if (!_isFalling)
+                {
+                    StartFall();
+                }
+                _isFalling = true;
+            }else
+            {
+                _isFalling = false;
+            }
+            
         }
 
         IEnumerator HighVerify() {

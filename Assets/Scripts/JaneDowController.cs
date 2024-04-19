@@ -31,6 +31,12 @@ public class JaneDowController : Character3DPlayer
     
     }
 
+    protected override void StartFall() { 
+        base.StartFall();
+        _anim.SetTrigger("StartFall");
+    
+    }
+
     protected override void Jump()
     {
         base.Jump();

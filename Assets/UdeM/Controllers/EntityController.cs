@@ -47,5 +47,7 @@ namespace UdeM.Controllers
         //protected virtual void Punch() { }
 
         public virtual void Crouch() { }
+
+        protected virtual void StartFall() { }
     }
 }
