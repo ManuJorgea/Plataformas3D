@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UdeM.Controllers;
 
 namespace UdeM.Skills {
 
     public class TargetShot : BaseSkill
     {
-        protected GameObject _target;
+        protected Damageable _target;
 
         public TargetShot
             (string name,
@@ -19,7 +20,16 @@ namespace UdeM.Skills {
             _target = null;
         }
 
-        public GameObject Target
+        public override void DoAtack()
+        {
+            base.DoAtack();
+            if ( _target != null )
+            {
+                _target.GetDamage(this);
+            }
+        }
+
+        public Damageable Target
         {
             get { return _target; }
             set { _target = value; }

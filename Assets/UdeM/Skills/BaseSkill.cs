@@ -50,6 +50,8 @@ namespace UdeM.Skills {
         { 
             get { return _range; } 
         }
+
+        public virtual void DoAtack() { }
     }
 
 }

@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UdeM.Skills;
 
 
 namespace UdeM.Controllers { 
 
-    public class Character3DPlayer : Character3D {
+    public class Character3DPlayer : Character3D, Damageable {
 
         protected float _axisH;
         protected float _axisV;
@@ -40,6 +41,11 @@ namespace UdeM.Controllers {
             {
                 Punch();
             }*/
+        }
+
+        public void GetDamage(BaseSkill skill)
+        {
+            Debug.Log("Ay me pegaste estupida.");
         }
     }
 }

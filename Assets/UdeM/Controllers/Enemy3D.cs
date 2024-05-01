@@ -7,7 +7,6 @@ namespace UdeM.Controllers {
 
     public class Enemy3D : NPC3D
     {
-        [SerializeField] protected GameObject _target;
         [SerializeField] protected bool _isExecutingAttck;
         protected AutoAttack _autoAttack;
 
@@ -38,7 +37,8 @@ namespace UdeM.Controllers {
                     _navigator.speed = 0;
                     _navigator.destination = transform.position;
                     _isExecutingAttck = true;
-                    Debug.Log("Atacó");
+                    _autoAttack.Target = _target.GetComponent<Damageable>();
+                    Atack(_autoAttack);
 
                 }else
                 {

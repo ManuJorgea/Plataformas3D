@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UdeM.Skills;
 
 namespace UdeM.Controllers
 {
@@ -15,9 +16,12 @@ namespace UdeM.Controllers
 
         protected LayerMask _terrainLayer;
 
+        [SerializeField] protected GameObject _target;
         [SerializeField] protected bool _isGrounded;
         [SerializeField] protected bool _isFalling;
         [SerializeField] public bool _isCrouching;
+
+        protected Dictionary<BaseSkill, bool> _coolDownDic;
 
 
         protected virtual void Awake() {
@@ -27,6 +31,7 @@ namespace UdeM.Controllers
             _gravityMod = 1f;
             _isGrounded = false;
             _isCrouching = false;
+            _coolDownDic = new Dictionary<BaseSkill, bool>();
 
             _terrainLayer = LayerMask.NameToLayer("Terrain");
             if ( _terrainLayer == -1) {
@@ -49,5 +54,23 @@ namespace UdeM.Controllers
         public virtual void Crouch() { }
 
         protected virtual void StartFall() { }
+
+        protected virtual void Atack(BaseSkill skill) {
+            if ( !_coolDownDic.ContainsKey(skill)) {
+                _coolDownDic.Add(skill, true);            
+            }
+            if (_coolDownDic[skill])
+            {
+                skill.DoAtack();
+                StartCoroutine(SkillCoolDown(skill));
+            }
+        }
+
+        IEnumerator SkillCoolDown(BaseSkill skill)
+        {
+            _coolDownDic[skill] = false;
+            yield return new WaitForSeconds(skill.CoolDown);
+            _coolDownDic[skill] = true;
+        }
     }
 }
