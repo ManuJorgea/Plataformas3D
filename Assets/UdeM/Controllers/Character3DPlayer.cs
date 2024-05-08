@@ -45,7 +45,7 @@ namespace UdeM.Controllers {
 
         public void GetDamage(BaseSkill skill)
         {
-            Debug.Log("Ay me pegaste estupida.");
+            Debug.Log("Ay me pegaste estupida. Me quitaste");
         }
     }
 }

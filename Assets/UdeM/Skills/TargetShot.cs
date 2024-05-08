@@ -16,7 +16,6 @@ namespace UdeM.Skills {
             float mgkDamage,
             float range) : base(name, coolDown, atckDamage, mgkDamage, range)
         {
-
             _target = null;
         }
 

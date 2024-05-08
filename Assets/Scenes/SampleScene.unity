@@ -214,13 +214,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 666396065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b3a0e27a4c140d4d9dfc00aacd8d556, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b2259aa6f1c9964f89db1afa647e298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _target: {fileID: 1498190278}
   _isGrounded: 0
   _isFalling: 0
   _isCrouching: 0
-  _target: {fileID: 1498190278}
+  _isAgro: 0
+  _isAttacking: 0
+  _isExecutingAttck: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02765aacd2709ca44aa47d642ddca6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _target: {fileID: 0}
   _isGrounded: 0
   _isFalling: 0
   _isCrouching: 0
